@@ -1,9 +1,13 @@
 package array;
+
+import common.*;
+
 public class RemoveDuplicateFromArray{
   public static void main(String[] args){
 	int[] nums = {0,0,1,1,2,2,2,3,3};
 	int newLen = removeDuplicateFromSortedArray(nums);
-	printList(nums,newLen);
+
+	Util.printList(nums, newLen);
   }
   
   public static int removeDuplicateFromSortedArray(int[] nums){
@@ -20,14 +24,5 @@ public class RemoveDuplicateFromArray{
 		return tail+1;	
 	}
   
-  public static void printList(int[] nums, int length) {
-		if (nums.length >= length) {
-			for (int i = 0; i < length; i++) {
-				System.out.print(nums[i]);
-				if (i != (length - 1))
-					System.out.print(", ");
-			}
-
-		}
-	}
+  
 }
