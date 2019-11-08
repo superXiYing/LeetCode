@@ -48,8 +48,8 @@ class BinaryTree {
 			printGivenLevel(root.right, level - 1);
 		}
 	}
-    
-	//Given a binary tree, print its node in breadth first order and not using Queue
+
+	// Given a binary tree, print its node in breadth first order using level by level manner
 	public void printBFS() {
 		int height = height(root);
 		for (int i = 1; i <= height; i++) {
@@ -57,7 +57,6 @@ class BinaryTree {
 		}
 	}
 
-	
 	void printLevelOrder(Node node) {
 		LinkedList<Node> queue = new LinkedList<Node>();
 		queue.add(node);
@@ -72,13 +71,54 @@ class BinaryTree {
 		}
 	}
 
-	//Given a binary tree, print its node in breadth first order using Queue
+	// Given a binary tree, print its node in breadth first order using Queue
 	public void printBFS_Queue() {
 		printLevelOrder(root);
 	}
 
-	
-	void printInOrder_Stack(Node node) {
+	private void printDFSPreOrder_Stack(Node root) {
+		if (root == null)
+			return;
+
+		Stack<Node> stack = new Stack<Node>();
+		stack.push(root);
+
+		while (!stack.isEmpty()) {
+			root = stack.pop();
+			System.out.println(root.key);
+
+			if (root.right != null)
+				stack.push(root.right);
+			if (root.left != null)
+				stack.push(root.left);
+		}
+
+	}
+
+	private void printDFSPostOrder_Stack(Node root) {
+		if (root == null)
+			return;
+
+		Stack<Node> s1 = new Stack<Node>();
+		Stack<Node> s2 = new Stack<Node>();
+		s1.push(root);
+		while (!s1.isEmpty()) {
+			root = s1.pop();
+			s2.push(root);
+			if (root.left != null)
+				s1.push(root.left);
+			if (root.right != null)
+				s1.push(root.right);
+		}
+
+		while (!s2.isEmpty()) {
+			root = s2.pop();
+			System.out.println(root.key);
+		}
+
+	}
+
+	private void printDFSInOrder_Stack(Node node) {
 		Stack<Node> stack = new Stack<Node>();
 
 		while (!stack.isEmpty() || node != null) {
@@ -95,11 +135,24 @@ class BinaryTree {
 		}
 
 	}
-    
+
+	// Given a binary tree, print its nodes in DFS(post order) using
+	// non-recursion
+	// method
+	public void printDFSPostOrder_Stack() {
+		printDFSPostOrder_Stack(root);
+	}
+
+	// Given a binary tree, print its nodes in DFS(preorder) using non-recursion
+	// method
+	public void printDFSPreOrder_Stack() {
+		printDFSPreOrder_Stack(root);
+	}
+
 	// Given a binary tree, print its nodes in DFS(inorder) using non-recursion
-    // method
-	public void printInOrder_Stack() {
-		printInOrder_Stack(root);
+	// method
+	public void printDFSInOrder_Stack() {
+		printDFSInOrder_Stack(root);
 	}
 
 	// Given a binary tree, print its nodes in inorder
@@ -115,7 +168,8 @@ class BinaryTree {
 		printInOrder(node.right);
 	}
 
-	// Given a binary tree, print its nodes in preorder of Depth first order search
+	// Given a binary tree, print its nodes in preorder of Depth first order
+	// search
 	void printPreOrder(Node node) {
 		if (node == null)
 			return;
@@ -127,9 +181,9 @@ class BinaryTree {
 		// recur on right child
 		printInOrder(node.right);
 	}
-	
 
-	// Given a binary tree, print its nodes in postorder of Depth first order search
+	// Given a binary tree, print its nodes in postorder of Depth first order
+	// search
 	void printPostOrder(Node node) {
 		if (node == null)
 			return;
@@ -180,14 +234,15 @@ class BinaryTree {
 		// 4,5,2,3,1
 		System.out.println("Traverse the tree in the PostOrder:");
 		tree.printPostOrder();
-        
+
 		// 1,2,3,4,5
 		System.out.println("Traverse the tree in the breadthOrder");
 		tree.printBFS();
-		
+
 		// 4,2,5,1,3
-		System.out.println("Traverse the tree in DFS(inorder) using non-recursion method");
-		tree.printInOrder_Stack();
+		System.out
+				.println("Traverse the tree in DFS(inorder) using non-recursion method");
+		tree.printDFSInOrder_Stack();
 	}
 
 }
