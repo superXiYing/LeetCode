@@ -7,12 +7,12 @@ public class TopKFrequentElement {
 		Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
 		int i;
 		
-		for(i = 0; i<nums.length; i++){
+		/*for(i = 0; i<nums.length; i++){
 			if(map.containsKey(nums[i]))
 				map.put(nums[i], map.get(nums[i])+1);
 			else
 				map.put(nums[i], 1);
-		}
+		}*/
 		
 		for(int n: nums){
 			map.put(n, map.getOrDefault(n, 0)+1);
@@ -147,7 +147,7 @@ public class TopKFrequentElement {
 	public static void main(String[] args){
 		int[] nums = {1,2};
 		int[] nums1 = {5,3,1,1,1,3,73,1};
-		List<Integer> result = topKFrequent1(nums1, 2);
+		List<Integer> result = topKFrequent(nums1, 2);
 		System.out.println(result);
 		
 		

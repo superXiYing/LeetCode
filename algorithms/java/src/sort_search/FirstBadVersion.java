@@ -119,6 +119,7 @@ public class FirstBadVersion {
 		int right = n;
 		int mid;
 		while (right > left) {
+			//The current method avoid integer overflow, instead of using (left+right)/2
 			mid = left + (right - left) / 2;
 			if (isBadVersion(mid) == false)
 				left = mid + 1;

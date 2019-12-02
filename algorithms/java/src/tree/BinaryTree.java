@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 class Node {
@@ -58,7 +59,9 @@ class BinaryTree {
 	}
 
 	void printLevelOrder(Node node) {
-		LinkedList<Node> queue = new LinkedList<Node>();
+		Queue<Node> queue = new LinkedList<Node>();
+		
+		
 		queue.add(node);
 		while (!queue.isEmpty()) {
 			Node current = queue.poll();
@@ -177,9 +180,9 @@ class BinaryTree {
 		// print the data of the node
 		System.out.println(node.key);
 		// recur on left child
-		printInOrder(node.left);
+		printPreOrder(node.left);
 		// recur on right child
-		printInOrder(node.right);
+		printPreOrder(node.right);
 	}
 
 	// Given a binary tree, print its nodes in postorder of Depth first order
@@ -189,9 +192,9 @@ class BinaryTree {
 			return;
 
 		// recur on left child
-		printInOrder(node.left);
+		printPostOrder(node.left);
 		// recur on right child
-		printInOrder(node.right);
+		printPostOrder(node.right);
 		// print the data of the node
 		System.out.println(node.key);
 	}

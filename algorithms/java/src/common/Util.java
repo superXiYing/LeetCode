@@ -1,5 +1,7 @@
 package common;
 
+import list.ListNode;
+
 public class Util {
 	public static void printList(int[] nums, int length) {
 		if (nums.length >= length) {
@@ -34,6 +36,13 @@ public class Util {
 		}
 		
 	}
+	
+	public static void printWholeList(ListNode head) {
+		while (head != null) {
+			System.out.print(head.getVal() + " ");
+			head = head.next();
+		}
 
+	}
 
 }
